@@ -7,13 +7,15 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class BrowserFactory {
-    static WebDriver driver;
+    public static WebDriver driver;
 
     public static WebDriver startBrowser(String browserChoice, String url){
+        System.out.println("DEBUG: BrowserFactory.startBrowser called with browserChoice='" + browserChoice + "', url='" + url + "'");
         switch (browserChoice.toLowerCase()){
             case "chrome":
                 ChromeOptions chromeOptions = new ChromeOptions();
-               // chromeOptions.addArguments("--headless");
+                chromeOptions.addArguments("--start-maximized");
+                chromeOptions.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
                 driver = new ChromeDriver(chromeOptions);
                 break;
             case "firefox":
@@ -23,6 +25,7 @@ public class BrowserFactory {
                 driver = new EdgeDriver();
                 break;
         }
+        System.out.println("DEBUG: BrowserFactory.created driver instance: " + driver.getClass().getName());
         driver.get(url);
         driver.manage().window().maximize();
         return driver;

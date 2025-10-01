@@ -1,20 +1,16 @@
-@signup
-Feature: Sign up screen for the user to create login details
+@Signup
+Feature:Ndosi Automation
 
-  Scenario Outline: As a user, I want to sign up to get access to Ndosi automation platform
+  Scenario Outline:As a user , I want navigate from Home page to learning material Sign up and Login
     Given User is on the signup page
-    When User enters name <name>
-    And User enters last name <lastname>
-    And User enters email <email>
-    And User enters new password <password>
-    And User enters confirm password <confirmPassword>
+    When User enters name <First Name>
+    And User enters last name <Last Name>
+    And User enters email <Email>
+    And User enters new password <Password>
+    And User enters confirm password <Confirm Password>
     And User clicks on the create account button
-    Then User should see an error message <errorMessage>
+    Then the successful registration pop up message is displayed
 
     Examples:
-      | name   | lastname | email          | password    | confirmPassword | errorMessage                                |
-      |        | surname  | test@gmail.com | Password123 | Password123     | Please fill in all fields                   |
-      | myName | surname  | test@gmail     | Password123 | Password123     | Please enter a valid email address          |
-      | myName | surname  | test@gmail.com | Passw       | Passw           | Password must be at least 8 characters long |
-      | myName | surname  | test@gmail.com | Password123 | Password        | Passwords do not match!                     |
-
+      | First Name | Last Name | Email             | Password  | Confirm Password | Message                                                      |
+      | Penny      | Wisey     | Penny1@Penny.co.za | Penny4321 | Penny4321       | Registration successful! Please login with your credentials. |
